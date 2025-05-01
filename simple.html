@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chotu</title>
+</head>
+
+<body>
+    <div id="root"
+        style="text-align: center; margin: auto; max-width: 800px; padding: 20px; border: 2px solid #c55e8e; border-radius: 10px;">
+        <h1 style="font-size: 28px; margin-bottom: 20px;">Chotu</h1>
+        <p>Chotu Demo in a Static HTML page.</p>
+    </div>
+
+    <script type="module">
+        import React from "https://esm.sh/react@latest"
+        import ReactDOMClient from "https://esm.sh/react-dom@latest/client"
+        import { Assistant } from 'https://esm.sh/lp-assistant@0.1.11-b'
+
+        window.onload = () => {
+            const container = document.createElement('div');
+            container.id = 'ai-assistant-container';
+            document.body.appendChild(container);
+            ReactDOMClient.createRoot(container).render(React.createElement(Assistant, {
+                apiUrl: 'https://assistant-70to.onrender.com',
+                modelName: 'mcp'
+            }));
+        };
+    </script>
+</body>
+
+</html>

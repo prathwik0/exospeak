@@ -4,31 +4,639 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LP Assistant</title>
+    <title>Chotu - AI Assistant for Your Business</title>
+    <style>
+        :root {
+            --primary-color: #c55e8e;
+            --secondary-color: #a24a73;
+            --text-dark: #343a40;
+            --text-medium-dark: #495057;
+            --text-light: #6c757d;
+            --text-triangle: #717171;
+            --bg-light: #f8f9fa;
+            --bg-medium: #e9ecef;
+            --bg-white: #fff;
+            --border-light: #dee2e6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #tsparticles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: var(--bg-medium);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: visible;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 4.2rem);
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--text-dark), var(--text-medium-dark), var(--text-dark));
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: gradient-move 6s linear infinite;
+            font-weight: 700;
+            line-height: 1.25;
+            text-shadow: none;
+            letter-spacing: -0.5px;
+        }
+
+        @keyframes gradient-move {
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: var(--text-light);
+            margin-bottom: 0;
+            line-height: 1.7;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: none;
+        }
+
+        .section {
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 60px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            background-color: var(--bg-white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .feature-item h3 {
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .integrate-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .integrate-content p {
+            color: var(--text-light);
+            margin-bottom: 40px;
+            font-size: 17px;
+        }
+
+        .code-block-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        pre {
+            background-color: var(--text-dark);
+            color: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            overflow-x: auto;
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            position: relative;
+            z-index: 1;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background-color 0.2s ease;
+            z-index: 2;
+        }
+
+        .copy-button:hover {
+            background-color: var(--primary-color);
+        }
+
+        .copy-button.copied {
+            background-color: #28a745;
+        }
+
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-section .container {
+            max-width: 650px;
+        }
+
+        .contact-section p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+
+        .contact-section a {
+            font-size: 22px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            word-break: break-all;
+        }
+
+        .contact-section a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+            .section h2 {
+                margin-bottom: 50px;
+            }
+
+            .features-grid {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero p {
+                font-size: clamp(1.0rem, 2.5vw, 1.2rem);
+            }
+
+            .section {
+                padding: 60px 15px;
+            }
+
+            .section h2 {
+                margin-bottom: 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .feature-item {
+                padding: 30px;
+            }
+
+            pre {
+                padding: 20px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: clamp(2.2rem, 8vw, 2.8rem);
+                line-height: 1.2;
+                background-size: 250% auto;
+            }
+
+            .hero h1 .h1-colon {
+                display: none;
+            }
+
+            .hero h1 .h1-subtitle {
+                display: block;
+                font-size: clamp(1.8rem, 8vw, 2.4rem);
+                font-weight: 400;
+                margin-top: 8px;
+                opacity: 0.9;
+                color: var(--text-medium-dark);
+                background: none;
+                -webkit-background-clip: initial;
+                background-clip: initial;
+                text-shadow: none;
+                letter-spacing: normal;
+            }
+
+            .hero p {
+                font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+                opacity: 0.85;
+                max-width: 90%;
+            }
+
+            .section {
+                padding: 50px 15px;
+            }
+
+            .feature-item h3 {
+                font-size: 20px;
+            }
+
+            .feature-item p {
+                font-size: 15px;
+            }
+
+            .contact-section a {
+                font-size: 18px;
+            }
+
+            pre {
+                font-size: 12px;
+            }
+
+            .copy-button {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div id="root"
-        style="text-align: center; margin: auto; max-width: 800px; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 10px;">
-        <h1 style="font-size: 28px; color: #333; margin-bottom: 20px;">LP Assistant</h1>
-        <p>LP Assistant Demo in a Static HTML page.</p>
-    </div>
+
+    <div id="tsparticles"></div>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Meet Chotu<span class="h1-colon">:</span> <span class="h1-subtitle">AI Assistant for Your
+                        Business</span></h1>
+                <p>Instantly add powerful, customizable AI chat for customer support and sales. Engage visitors, answer
+                    questions, and manage support tickets effortlessly.</p>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <div class="container">
+                <h2>Why Choose Chotu?</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <h3>Easy Integration</h3>
+                        <p>Add Chotu to any website with a simple script snippet. No complex setup required, get started
+                            in minutes.</p>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <h3>Customizable UI</h3>
+                        <p>Appears as a sleek, floating chat interface. Customize its appearance to perfectly match your
+                            brand.</p>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <h3>Support & Sales Focused</h3>
+                        <p>Intelligently handle customer queries, generate qualified leads, and provide 24/7 automated
+                            assistance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="integrate" class="section">
+            <div class="container integrate-content">
+                <h2>Integrate in Minutes</h2>
+                <p>Adding Chotu is incredibly simple. Just copy the script below and paste it before the closing
+                    `&lt;/body&gt;` tag in your HTML.</p>
+
+                <div class="code-block-wrapper">
+                    <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    <pre><code id="code-snippet">
+&lt;script type="module"&gt;
+    import React from "https://esm.sh/react@latest"
+    import ReactDOMClient from "https://esm.sh/react-dom@latest/client"
+    import { Assistant } from 'https://esm.sh/lp-assistant@0.1.11-b'
+
+    window.addEventListener('load', () => {
+        const container = document.createElement('div');
+        container.id = 'ai-assistant-container';
+        document.body.appendChild(container);
+        ReactDOMClient.createRoot(container).render(
+            React.createElement(Assistant, {
+                apiUrl: 'custom_api_url', // Replace with your API URL
+                modelName: 'model' // Replace with your model name
+            })
+        );
+    });
+&lt;/script&gt;</code></pre>
+                </div>
+
+                <p style="font-size: 15px; margin-top: 30px;"><em>The Chotu assistant is already running on this page!
+                        Look for the chat icon in the bottom-right corner.</em></p>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <p>Have questions, need help with setup, or want to discuss custom features? We'd love to hear from you.
+                </p>
+                <p>Contact us at: <a href="mailto:hi@exospeak.com">hi@exospeak.com</a></p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 <a href="https://exospeak.com" target="_blank">Exospeak</a>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+    <script>
+        async function loadParticles(options) {
+            if (document.getElementById("tsparticles")) {
+                await tsParticles.load("tsparticles", options);
+            } else {
+                console.error("tsParticles container not found.");
+            }
+        }
+
+        const particleOptions = {
+            background: {
+                color: {
+                    value: "transparent"
+                }
+            },
+            fpsLimit: 60,
+            interactivity: {
+                events: {
+                    onHover: {
+                        enable: true,
+                        mode: "repulse"
+                    },
+                    onClick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    repulse: {
+                        distance: 30,
+                        duration: 4.0,
+                        speed: 2.0
+                    },
+                    push: {
+                        quantity: 3
+                    },
+                    bubble: {
+                        distance: 150,
+                        duration: 2,
+                        opacity: 0.8,
+                        size: 6,
+                    }
+                }
+            },
+            particles: {
+                color: {
+                    value: [
+                        getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim() || '#c55e8e',
+                        getComputedStyle(document.documentElement).getPropertyValue('--secondary-color').trim() || '#a24a73',
+                        "#ffffff",
+                        "#d0d0d0"
+                    ]
+                },
+                links: {
+                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-light').trim() || '#6c757d',
+                    distance: 150,
+                    enable: true,
+                    opacity: 0.05,
+                    width: 1,
+                    triangles: {
+                        enable: true,
+                        opacity: 0.01,
+                        color: {
+                            value: getComputedStyle(document.documentElement).getPropertyValue('--text-triangle').trim() || '#333333'
+                        }
+                    }
+                },
+                collisions: {
+                    enable: false
+                },
+                move: {
+                    direction: "none",
+                    enable: true,
+                    outModes: {
+                        default: "bounce"
+                    },
+                    random: true,
+                    speed: 0.2,
+                    straight: false,
+                },
+                number: {
+                    density: {
+                        enable: true,
+                        area: 600
+                    },
+                    value: 100
+                },
+                opacity: {
+                    value: { min: 0.4, max: 0.9 },
+                    animation: {
+                        enable: true,
+                        speed: 0.1,
+                        minimumValue: 0.3,
+                        sync: false
+                    }
+                },
+                shape: {
+                    type: "circle"
+                },
+                size: {
+                    value: { min: 1, max: 4 },
+                    animation: {
+                        enable: true,
+                        speed: 0.3,
+                        minimumValue: 0.8,
+                        sync: false
+                    }
+                }
+            },
+            detectRetina: true
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => loadParticles(particleOptions));
+        } else {
+            loadParticles(particleOptions);
+        }
+
+        function copyCode(button) {
+            const codeElement = document.getElementById('code-snippet');
+            if (!codeElement) return;
+
+            const code = codeElement.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy code: ', err);
+                button.textContent = 'Failed!';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
 
     <script type="module">
         import React from "https://esm.sh/react@latest"
         import ReactDOMClient from "https://esm.sh/react-dom@latest/client"
-        import { Assistant } from 'https://esm.sh/lp-assistant@latest'
+        import { Assistant } from 'https://esm.sh/lp-assistant@0.1.11-b'
 
-        window.onload = () => {
+        window.addEventListener('load', () => {
             const container = document.createElement('div');
             container.id = 'ai-assistant-container';
             document.body.appendChild(container);
-            ReactDOMClient.createRoot(container).render(React.createElement(Assistant, {
-                apiUrl: 'https://assistant-70to.onrender.com',
-                modelName: 'mcp'
-            }));
-        };
+            ReactDOMClient.createRoot(container).render(
+                React.createElement(Assistant, {
+                    apiUrl: 'https://assistant-70to.onrender.com',
+                    modelName: 'mcp'
+                })
+            );
+        });
     </script>
+
 </body>
 
 </html>
