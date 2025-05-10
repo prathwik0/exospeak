@@ -36,11 +36,13 @@
         <section
             class="hero min-h-screen flex flex-col items-center justify-center text-center p-10 box-border relative overflow-visible z-10">
             <div class="hero-content relative z-10 max-w-3xl">
-                <h1 class="text-[clamp(2.8rem,7vw,4.2rem)] mb-5 font-bold leading-tight tracking-tight text-text-dark">
-                    Meet Chotu<span class="h1-colon">:</span> <span class="h1-subtitle">
-                        AI Assistant for Your Business
-                    </span>
+                <h1 class="text-[clamp(2.8rem,7vw,4.2rem)] font-bold leading-tight tracking-tight text-text-dark mb-8">
+                    Meet Chotu
                 </h1>
+                <p
+                    class="h1-subtitle text-[clamp(1.6rem,5vw,3.2rem)] font-normal text-text-medium-dark leading-[1.15] md:leading-tight mb-10 max-w-3xl mx-auto">
+                    AI Assistant for Your Business
+                </p>
                 <p class="text-[clamp(1.1rem,2.5vw,1.3rem)] text-text-light mb-0 leading-relaxed max-w-2xl mx-auto">
                     Instantly add powerful, customizable AI chat for customer support and sales. Engage visitors, answer
                     questions, and manage support tickets effortlessly.
@@ -48,51 +50,64 @@
             </div>
         </section>
 
-
-        <section id="features" class="section py-20 px-5 relative z-10">
-            <div class="container mx-auto px-5 max-w-5xl relative z-10">
+        <section id="features" class="section py-16 sm:py-20 px-4 sm:px-6 relative z-10">
+            <div class="container mx-auto px-4 sm:px-6 max-w-5xl relative z-10">
                 <h2 class="text-center text-[clamp(1.8rem,5vw,2.5rem)] mb-16 text-text-dark font-semibold">
                     Why Choose Chotu?
                 </h2>
-                <div
-                    class="features-grid grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-8 text-left max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 text-left">
                     <div
-                        class="feature-item bg-bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out flex flex-col relative z-10 hover:-translate-y-2">
-                        <svg class="feature-icon w-12 h-12 mb-5 text-primary" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                        <h3 class="text-xl font-semibold mt-0 mb-2.5 text-primary">Easy Integration</h3>
-                        <p class="text-base text-text-light leading-relaxed flex-grow">
+                        class="group feature-item bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out flex flex-col transform hover:scale-[1.03] border-2 border-transparent hover:border-primary">
+                        <div
+                            class="mb-4 flex items-center justify-center w-12 h-12 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors duration-300">
+                            <svg class="feature-icon w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                        </div>
+                        <h3
+                            class="text-2xl font-semibold mb-4 text-text-dark group-hover:text-primary transition-colors duration-300">
+                            Easy Integration</h3>
+                        <p class="text-sm text-text-light leading-relaxed flex-grow">
                             Add Chotu to any website with a simple script snippet. No complex setup required, get
                             started in minutes.
                         </p>
                     </div>
                     <div
-                        class="feature-item bg-bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out flex flex-col relative z-10 hover:-translate-y-2">
-                        <svg class="feature-icon w-12 h-12 mb-5 text-primary" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <h3 class="text-xl font-semibold mt-0 mb-2.5 text-primary">Customizable UI</h3>
-                        <p class="text-base text-text-light leading-relaxed flex-grow">
+                        class="group feature-item bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out flex flex-col transform hover:scale-[1.03] border-2 border-transparent hover:border-primary">
+                        <div
+                            class="mb-4 flex items-center justify-center w-12 h-12 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors duration-300">
+                            <svg class="feature-icon w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3
+                            class="text-2xl font-semibold mb-4 text-text-dark group-hover:text-primary transition-colors duration-300">
+                            Customizable UI</h3>
+                        <p class="text-sm text-text-light leading-relaxed flex-grow">
                             Appears as a sleek, floating chat interface. Customize its appearance to perfectly match
                             your brand.
                         </p>
                     </div>
                     <div
-                        class="feature-item bg-bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out flex flex-col relative z-10 hover:-translate-y-2">
-                        <svg class="feature-icon w-12 h-12 mb-5 text-primary" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        <h3 class="text-xl font-semibold mt-0 mb-2.5 text-primary">Support & Sales Focused</h3>
-                        <p class="text-base text-text-light leading-relaxed flex-grow">
+                        class="group feature-item bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out flex flex-col transform hover:scale-[1.03] border-2 border-transparent hover:border-primary">
+                        <div
+                            class="mb-4 flex items-center justify-center w-12 h-12 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors duration-300">
+                            <svg class="feature-icon w-7 h-7 text-primary" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h3
+                            class="text-2xl font-semibold mb-4 text-text-dark group-hover:text-primary transition-colors duration-300">
+                            For Sales & Support</h3>
+                        <p class="text-sm text-text-light leading-relaxed flex-grow">
                             Intelligently handle customer queries, generate qualified leads, and provide 24/7 automated
                             assistance.
                         </p>
@@ -101,7 +116,7 @@
             </div>
         </section>
 
-        <section id="integrate" class="section py-20 px-5 relative z-10">
+        <!-- <section id="integrate" class="section py-20 px-5 relative z-10">
             <div class="container integrate-content max-w-2xl mx-auto text-center relative z-10">
                 <h2 class="text-center text-[clamp(1.8rem,5vw,2.5rem)] mb-16 text-text-dark font-semibold">Integrate in
                     Minutes</h2>
@@ -140,7 +155,7 @@
                         corner.</em>
                 </p>
             </div>
-        </section>
+        </section> -->
 
 
         <section id="contact" class="section contact-section py-20 px-5 relative z-10 text-center">
